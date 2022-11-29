@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/list_fragment">
+
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="com.ghennadiiganenko.android.companies.fragments.list.ListFragment"
+        android:label="ListFragment"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_list_fragment_to_card_fragment"
+            app:destination="@id/card_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/card_fragment"
+        android:name="com.ghennadiiganenko.android.companies.fragments.card.CardFragment"
+        android:label="CardFragment"
+        tools:layout="@layout/fragment_card"/>
+</navigation>
