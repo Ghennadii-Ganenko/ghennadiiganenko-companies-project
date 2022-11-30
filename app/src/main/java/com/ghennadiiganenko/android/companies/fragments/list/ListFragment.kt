@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.ghennadiiganenko.android.companies.R
 import com.ghennadiiganenko.android.companies.databinding.FragmentListBinding
@@ -45,8 +46,10 @@ class ListFragment : Fragment(R.layout.fragment_list), CompaniesListAdapter.Item
     }
 
     override fun onItemClicked(item: CompanyEntity, view: View) {
-        navigateToCardFragment()
+        val action = ListFragmentDirections.actionListFragmentToCardFragment(item.id)
+        navigateToCardFragment(action)
     }
 
-    private fun navigateToCardFragment() = findNavController().navigate(R.id.card_fragment)
+    private fun navigateToCardFragment(action: NavDirections) =
+        findNavController().navigate(action)
 }

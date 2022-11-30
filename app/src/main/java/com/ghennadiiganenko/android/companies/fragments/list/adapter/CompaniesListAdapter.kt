@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.ghennadiiganenko.android.companies.R
 import com.ghennadiiganenko.android.companies.data.common.Common.BASE_URL
 import com.ghennadiiganenko.android.companies.databinding.ItemCompaniesListBinding
 import com.ghennadiiganenko.android.companies.domain.models.CompanyEntity
@@ -40,13 +41,16 @@ class CompaniesListAdapter(
                     clickListener.onItemClicked(item, view)
                 }
 
-                Picasso.get().load("$BASE_URL/${item.img}").into(companyImage)
+                Picasso
+                    .get()
+                    .load(root.context.resources.getString(R.string.image_url, BASE_URL,item.img))
+                    .into(companyImage)
                 companyName.text = item.name
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompaniesViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompaniesListAdapter.CompaniesViewHolder =
         CompaniesViewHolder(
             ItemCompaniesListBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -57,7 +61,7 @@ class CompaniesListAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
-        val packHolder = holder as CompaniesViewHolder
+        val packHolder = holder as CompaniesListAdapter.CompaniesViewHolder
         packHolder.bind(item)
     }
 

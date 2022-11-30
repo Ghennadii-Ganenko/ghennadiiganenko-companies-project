@@ -12,12 +12,19 @@
         tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_list_fragment_to_card_fragment"
-            app:destination="@id/card_fragment" />
+            app:destination="@id/card_fragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/card_fragment"
         android:name="com.ghennadiiganenko.android.companies.fragments.card.CardFragment"
         android:label="CardFragment"
-        tools:layout="@layout/fragment_card"/>
+        tools:layout="@layout/fragment_card">
+
+        <argument
+            android:name="id"
+            app:argType="string"
+            android:defaultValue="" />
+
+    </fragment>
 </navigation>
